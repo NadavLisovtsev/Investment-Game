@@ -9,6 +9,8 @@ namespace InvestmentGame.AssymptoticAgent
 {
     public static class EarnLossToAdoptionRate
     {
+        private static string FUNC_TABLE = "ElToArFunc";
+
         private static Dictionary<double, double> ElToArFunc = null;
         private static int _roundFactor = 2;
         private static DAL dal = new DAL(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
@@ -21,24 +23,9 @@ namespace InvestmentGame.AssymptoticAgent
             {
                 if(ElToArFunc == null)
                 {
-                    ElToArFunc = calcFunc();
+                    ElToArFunc = initializeFunc();
                 }
             }
-            // Print ElToArFunc -- Debug Puproses
-            /*
-            var l = ElToArFunc.OrderBy(item => item.Key);
-            var dic = l.ToDictionary((keyItem) => keyItem.Key, (valueItem) => valueItem.Value);
-
-            using (StreamWriter outputFile = new StreamWriter(@"C:\Users\Ola\Desktop\EltoArFunc.txt"))
-            {
-                foreach (KeyValuePair<double, double> pair in dic)
-                {
-                    outputFile.WriteLine("{0},{1}", pair.Key, pair.Value);
-                }
-            }
-
-            */
-            // End of printing -- Debug Purposes
             double roundedEarnLoss  = Math.Round(earnLoss, _roundFactor);
             if(ElToArFunc.ContainsKey(roundedEarnLoss))
             {
@@ -65,6 +52,55 @@ namespace InvestmentGame.AssymptoticAgent
             double alpha = 1 - (roundedEarnLoss - keys[i - 1]) / length;
             double beta = 1 - (keys[i] - roundedEarnLoss) / length;
             return (alpha * ElToArFunc[keys[i-1]] + beta * ElToArFunc[keys[i]]) / 2.0;
+        }
+
+        private static Dictionary<double, double> initializeFunc()
+        {
+            Dictionary<double, double> func;
+           if(!checkIfFuncInDB())
+           {
+               func = calcFunc();
+               writeFuncToDB(func);
+           }
+           else
+           {
+               func = readFuncFromDB();
+           }
+           return func;
+        }
+
+        private static Dictionary<double, double> readFuncFromDB()
+        {
+            DALTypes[] types = new DALTypes[2] {DALTypes.Double, DALTypes.Double};
+            List<List<DALType>> data = dal.ReadFullTable(FUNC_TABLE, types);
+
+            Dictionary<double, double> func = new Dictionary<double, double>();
+
+            foreach (List<DALType> row in data)
+            {
+                func[(double)row[0].getData()] = (double)row[1].getData();
+            }
+            return func;
+        }
+
+        private static void writeFuncToDB(Dictionary<double, double> func)
+        {
+            List<List<DALType>> data = new List<List<DALType>>();
+
+            foreach(KeyValuePair<double, double> p in func)
+            {
+                List<DALType> row = new List<DALType>();
+                row.Add(new DALDouble(p.Key));
+                row.Add(new DALDouble(p.Value));
+
+                data.Add(row);
+            }
+            dal.writeData(FUNC_TABLE, data);
+        }
+
+        private static bool checkIfFuncInDB()
+        {
+            return !dal.isTableEmpty(FUNC_TABLE);
         }
 
         private static Dictionary<double, double> calcFunc()

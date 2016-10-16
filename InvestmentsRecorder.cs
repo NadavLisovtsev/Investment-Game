@@ -51,6 +51,7 @@ namespace InvestmentGame
             record.Add(new DALInt(isGain));
             record.Add(new DALInt(training));
             record.Add(new DALString(DateTime.UtcNow.ToString()));
+            record.Add(new DALString(ConfigurationManager.AppSettings["ExperimentID"]));
 
             List<List<DALType>> records = new List<List<DALType>>();
             records.Add(record);
