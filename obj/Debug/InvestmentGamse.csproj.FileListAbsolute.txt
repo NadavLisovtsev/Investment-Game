@@ -1,0 +1,6 @@
+C:\Nadav\BarIlan\Thesis\FindTheDuck With sheeps  dynamiclly allocated\bin\FindTheDuck.dll.config
+C:\Nadav\BarIlan\Thesis\FindTheDuck With sheeps  dynamiclly allocated\bin\FindTheDuck.dll
+C:\Nadav\BarIlan\Thesis\FindTheDuck With sheeps  dynamiclly allocated\bin\FindTheDuck.pdb
+C:\Nadav\BarIlan\Thesis\FindTheDuck With sheeps  dynamiclly allocated\bin\Microsoft.Web.Infrastructure.dll
+C:\Nadav\BarIlan\Thesis\FindTheDuck With sheeps  dynamiclly allocated\obj\Debug\FindTheDuck.dll
+C:\Nadav\BarIlan\Thesis\FindTheDuck With sheeps  dynamiclly allocated\obj\Debug\FindTheDuck.pdb

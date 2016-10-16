@@ -1,0 +1,9 @@
+C:\Users\Ola\Desktop\Nadav\Investment Game\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Ola\Desktop\Nadav\Investment Game\bin\System.Data.SQLite.dll
+C:\Users\Ola\Desktop\Nadav\Investment Game\bin\System.Data.SQLite.pdb
+C:\Users\Ola\Desktop\Nadav\Investment Game\bin\System.Data.SQLite.xml
+C:\Users\Ola\Desktop\Nadav\Investment Game\bin\InvestmentGame.dll.config
+C:\Users\Ola\Desktop\Nadav\Investment Game\bin\InvestmentGame.dll
+C:\Users\Ola\Desktop\Nadav\Investment Game\bin\InvestmentGame.pdb
+C:\Users\Ola\Desktop\Nadav\Investment Game\obj\x64\Debug\InvestmentGame.dll
+C:\Users\Ola\Desktop\Nadav\Investment Game\obj\x64\Debug\InvestmentGame.pdb
