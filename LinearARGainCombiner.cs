@@ -8,8 +8,8 @@ namespace InvestmentGame
 {
     public class LinearARGainCombiner : ARGainCombiner
     {
-        private float _arAlpha = float.Parse(ConfigurationManager.AppSettings["arAlpha"]);
-        private float _gainBeta = float.Parse(ConfigurationManager.AppSettings["gainBeta"]);
+        private double _arAlpha = double.Parse(ConfigurationManager.AppSettings["arAlpha"]);
+        private double _gainBeta = double.Parse(ConfigurationManager.AppSettings["gainBeta"]);
         public override double combine(double ar, double gain)
         {
             return _arAlpha * ar + _gainBeta * gain;

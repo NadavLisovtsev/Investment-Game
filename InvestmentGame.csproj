@@ -142,6 +142,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ForDebug\DebugFileWriter.cs" />
     <Compile Include="FromGainCommision.cs" />
     <Compile Include="FromInvestmentCommision.cs" />
     <Compile Include="GameManager.cs" />

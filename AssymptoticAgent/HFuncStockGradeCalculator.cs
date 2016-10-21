@@ -30,7 +30,7 @@ namespace InvestmentGame.AssymptoticAgent
             {
                 double upToDateAverage = avg.addValueToAverage(earning, earnLossAverage);
                 double expectedAdoptionRate = EarnLossToAdoptionRate.getAdoptionRate(upToDateAverage);
-                sum += _h.combine(upToDateAverage, earning) * earningProbability;
+                sum += _h.combine(expectedAdoptionRate, earning) * earningProbability;
             }
             return sum;
         }

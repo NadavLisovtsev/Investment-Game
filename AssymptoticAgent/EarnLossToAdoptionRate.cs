@@ -29,7 +29,7 @@ namespace InvestmentGame.AssymptoticAgent
             double roundedEarnLoss  = Math.Round(earnLoss, _roundFactor);
             if(ElToArFunc.ContainsKey(roundedEarnLoss))
             {
-                return roundedEarnLoss;
+                return ElToArFunc[roundedEarnLoss];
             }
             List<double> keys = ElToArFunc.Keys.ToList<double>();
             keys.Sort();
@@ -51,7 +51,7 @@ namespace InvestmentGame.AssymptoticAgent
             double length = keys[i] - keys[i - 1];
             double alpha = 1 - (roundedEarnLoss - keys[i - 1]) / length;
             double beta = 1 - (keys[i] - roundedEarnLoss) / length;
-            return (alpha * ElToArFunc[keys[i-1]] + beta * ElToArFunc[keys[i]]) / 2.0;
+            return alpha * ElToArFunc[keys[i-1]] + beta * ElToArFunc[keys[i]];
         }
 
         private static Dictionary<double, double> initializeFunc()

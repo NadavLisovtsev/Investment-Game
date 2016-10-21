@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InvestmentGame.ForDebug;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -29,6 +30,8 @@ namespace InvestmentGame.AssymptoticAgent
             {
                 stockId = calcStockForRegularRound(money, hist, roundNum);
             }
+
+            DebugFileWriter.writeToFile("output.txt", stockId.ToString());
             
            Tuple<double, double, double> t =  _gm.investOnStock(money, roundNum, stockId, _isTrain);
            double result_money = t.Item1;
