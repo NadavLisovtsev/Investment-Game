@@ -14,7 +14,7 @@ namespace InvestmentGame.AssymptoticAgent
             List<double> earnings = s.getEarnings();
             double sum = 0;
             List<HistoryRecord> investmentsRecords = history.getInvestmentsHistory();
-            double currTotalMoney = investmentsRecords[investmentsRecords.Count - 1]._investmentData.endMoney;
+            double currTotalMoney = investmentsRecords[investmentsRecords.Count - 1]._currMoney;
             
 
             foreach (double earning in earnings)

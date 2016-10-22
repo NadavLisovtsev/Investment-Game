@@ -26,7 +26,13 @@ namespace InvestmentGame.AssymptoticAgent
             double currVal = _preCalc != null ? _preCalc.doCalc(l[0]) : l[0];
             if (l.Count == 1)
             {
-                return _alpha * currVal;
+                return currVal;
+            }
+            if (l.Count == 2)
+            {
+                double secondVal = _preCalc != null ? _preCalc.doCalc(l[1]) : l[1];
+
+                return _alpha * currVal + (1 - _alpha) * secondVal;
             }
             double t = calcAverage(l.GetRange(1, l.Count - 1));
 

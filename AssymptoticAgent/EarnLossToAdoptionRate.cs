@@ -110,18 +110,8 @@ namespace InvestmentGame.AssymptoticAgent
             Dictionary<double, List<double>> preFunc = new Dictionary<double, List<double>>();
             foreach(string user in users)
             {
-                string UserARandEarnLossQuery = String.Format(ConfigurationManager.AppSettings["GetUserARAndEarnLossQuery"], user);
-                List<DALTypes> ARandGainColumns = new List<DALTypes>();
-                ARandGainColumns.Add(DALTypes.Double);
-                ARandGainColumns.Add(DALTypes.Double);
 
-                List<List<DALType>> ARandGainResults = dal.ReadData(UserARandEarnLossQuery, ARandGainColumns.ToArray());
-
-                List<KeyValuePair<double, double>> ARandGain = new List<KeyValuePair<double, double>>();
-                foreach(List<DALType> row in ARandGainResults)
-                {
-                    ARandGain.Add(new KeyValuePair<double, double>((double)row[0].getData(),(double)row[1].getData()));
-                }
+                List<KeyValuePair<double, double>> ARandGain = getARandGainPerUser(user);
 
                 AsymptoticAverage avg = new AsymptoticAverage();                
                 for(int i = 1; i < ARandGain.Count; i++)
@@ -155,6 +145,25 @@ namespace InvestmentGame.AssymptoticAgent
             return func;
         }
 
+        private static List<KeyValuePair<double, double>> getARandGainPerUser(string user)
+        {
+            string UserARandEarnLossQuery = String.Format(ConfigurationManager.AppSettings["GetUserARAndEarnLossQuery"], user);
+
+            List<DALTypes> ARandGainColumns = new List<DALTypes>();
+            ARandGainColumns.Add(DALTypes.Double);
+            ARandGainColumns.Add(DALTypes.Double);
+
+            List<List<DALType>> ARandGainResults = dal.ReadData(UserARandEarnLossQuery, ARandGainColumns.ToArray());
+
+            List<KeyValuePair<double, double>> ARandGain = new List<KeyValuePair<double, double>>();
+            foreach (List<DALType> row in ARandGainResults)
+            {
+                ARandGain.Add(new KeyValuePair<double, double>((double)row[0].getData(), (double)row[1].getData()));
+            }
+
+            return ARandGain;
+        }
+        
         private static List<string> getUsersList()
         {
             string allUsersQuery = ConfigurationManager.AppSettings["GetAllUsersQuery"];
