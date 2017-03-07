@@ -28,5 +28,22 @@ namespace InvestmentGame
             }
             return earnLossList;
         }
+
+        public List<double> getARList()
+        {
+            List<double> arList = new List<double>();
+            foreach(HistoryRecord record in history)
+            {
+                double money = record._prevMoney;
+                double investment = record._investmentData.investmentMoney;
+                arList.Add(investment / money);
+            }
+            return arList;
+        }
+
+        public double getCurrMoney()
+        {
+            return history[history.Count - 1]._currMoney;
+        }
     }
 }

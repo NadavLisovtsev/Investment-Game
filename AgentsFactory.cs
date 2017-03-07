@@ -15,6 +15,14 @@ namespace InvestmentGame
 
             agentsDict.Add("Optimal", Type.GetType("InvestmentGame.OptimalAgent"));
             agentsDict.Add("Asymptotic", Type.GetType("InvestmentGame.AssymptoticAgent.AsymptoticAgent"));
+            agentsDict.Add("RegressionNN", Type.GetType("InvestmentGame.LearningAgents.RegressionAgentNN"));
+            agentsDict.Add("RegressionSVM", Type.GetType("InvestmentGame.LearningAgents.RegressionAgentSVM"));
+            agentsDict.Add("RegressionRF", Type.GetType("InvestmentGame.Agents.RegressionAgentRF"));
+            agentsDict.Add("RegressionRNN", Type.GetType("InvestmentGame.Agents.RegressionAgentRNN"));
+            agentsDict.Add("RegressionAVG", Type.GetType("InvestmentGame.Agents.RegressionAgentAVG"));
+            agentsDict.Add("RegressionLR", Type.GetType("InvestmentGame.Agents.RegressionAgentLR"));
+
+
         }
         public InvestAgent CreateAgent(string name, GameManager gm, Comission c, bool isTrain)
         {

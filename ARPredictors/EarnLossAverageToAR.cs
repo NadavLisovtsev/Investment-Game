@@ -4,10 +4,12 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Web;
+using InvestmentGame.UtilitiesService;
+
 
 namespace InvestmentGame.AssymptoticAgent
 {
-    public static class EarnLossToAdoptionRate
+    public  class EarnLossAverageToAR : IARPredictor
     {
         private static string FUNC_TABLE = "ElToArFunc";
 
@@ -15,9 +17,15 @@ namespace InvestmentGame.AssymptoticAgent
         private static int _roundFactor = 2;
         private static DAL dal = new DAL(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
         private static object lockObject = new object();
-       
+        private static Service1Client _utilsClient = new Service1Client();
 
-        public static double getAdoptionRate(double earnLoss)
+        public double predict(List<double> ARs, List<double> gains)
+        {
+            double earnLossAverage = _utilsClient.CalcAsymptoticAverage(gains.ToArray());
+            return getAdoptionRate(earnLossAverage);
+        }
+
+        private double getAdoptionRate(double earnLoss)
         {
             lock(lockObject)
             {
@@ -54,7 +62,7 @@ namespace InvestmentGame.AssymptoticAgent
             return alpha * ElToArFunc[keys[i-1]] + beta * ElToArFunc[keys[i]];
         }
 
-        private static Dictionary<double, double> initializeFunc()
+        private Dictionary<double, double> initializeFunc()
         {
             Dictionary<double, double> func;
            if(!checkIfFuncInDB())
@@ -69,7 +77,7 @@ namespace InvestmentGame.AssymptoticAgent
            return func;
         }
 
-        private static Dictionary<double, double> readFuncFromDB()
+        private Dictionary<double, double> readFuncFromDB()
         {
             DALTypes[] types = new DALTypes[2] {DALTypes.Double, DALTypes.Double};
             List<List<DALType>> data = dal.ReadFullTable(FUNC_TABLE, types);
@@ -83,7 +91,7 @@ namespace InvestmentGame.AssymptoticAgent
             return func;
         }
 
-        private static void writeFuncToDB(Dictionary<double, double> func)
+        private void writeFuncToDB(Dictionary<double, double> func)
         {
             List<List<DALType>> data = new List<List<DALType>>();
 
@@ -98,12 +106,12 @@ namespace InvestmentGame.AssymptoticAgent
             dal.writeData(FUNC_TABLE, data);
         }
 
-        private static bool checkIfFuncInDB()
+        private bool checkIfFuncInDB()
         {
             return !dal.isTableEmpty(FUNC_TABLE);
         }
 
-        private static Dictionary<double, double> calcFunc()
+        private  Dictionary<double, double> calcFunc()
         {
             List<string> users = getUsersList();
 
@@ -113,7 +121,7 @@ namespace InvestmentGame.AssymptoticAgent
 
                 List<KeyValuePair<double, double>> ARandGain = getARandGainPerUser(user);
 
-                AsymptoticAverage avg = new AsymptoticAverage();                
+             //   AsymptoticAverage avg = new AsymptoticAverage();                
                 for(int i = 1; i < ARandGain.Count; i++)
                 {
                     double currAR = ARandGain[i].Key;
@@ -123,7 +131,7 @@ namespace InvestmentGame.AssymptoticAgent
                         prevGains.Add(ARandGain[j].Value);
                     }
 
-                    double averageGainUntilNow = Math.Round(avg.calcAverage(prevGains), _roundFactor);
+                    double averageGainUntilNow = Math.Round(_utilsClient.CalcAsymptoticAverage(prevGains.ToArray()), _roundFactor);
                     if(preFunc.ContainsKey(averageGainUntilNow))
                     {
                         preFunc[averageGainUntilNow].Add(currAR);
@@ -145,7 +153,7 @@ namespace InvestmentGame.AssymptoticAgent
             return func;
         }
 
-        private static List<KeyValuePair<double, double>> getARandGainPerUser(string user)
+        private List<KeyValuePair<double, double>> getARandGainPerUser(string user)
         {
             string UserARandEarnLossQuery = String.Format(ConfigurationManager.AppSettings["GetUserARAndEarnLossQuery"], user);
 
@@ -164,7 +172,7 @@ namespace InvestmentGame.AssymptoticAgent
             return ARandGain;
         }
         
-        private static List<string> getUsersList()
+        private List<string> getUsersList()
         {
             string allUsersQuery = ConfigurationManager.AppSettings["GetAllUsersQuery"];
             List<DALTypes> allUsersColumns = new List<DALTypes>();
@@ -180,5 +188,6 @@ namespace InvestmentGame.AssymptoticAgent
             
            
         }
+
     }
 }

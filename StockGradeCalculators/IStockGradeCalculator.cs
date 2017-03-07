@@ -7,6 +7,7 @@ namespace InvestmentGame.AssymptoticAgent
 {
     public interface IStockGradeCalculator
     {
-        double calcStockGrade(Stock s, double money, double earnLossAverage, History history);
+        void setARPredictor(IARPredictor predictor);
+        double calcStockGrade(Stock s, double money, List<double> ARList, List<double> earnLossList, History history);
     }
 }

@@ -150,6 +150,7 @@ namespace InvestmentGame
         {
             Session["isTraining"] = false;
             Session["Money"] = int.Parse(ConfigurationManager.AppSettings["InitialMoneyAmount"]);
+            Session["History"] = new History();
             MultiView1.SetActiveView(investment_view);
         }
 

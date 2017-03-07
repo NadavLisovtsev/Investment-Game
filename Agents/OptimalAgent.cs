@@ -18,17 +18,8 @@ namespace InvestmentGame
         {
             checkIfInitilized();
 
-            Tuple<double, double, double> t = _gm.investOnStock(money, roundNum, optimalStock, _isTrain);
-            double result_money = t.Item1;
-            double earn = t.Item2;
-            double earnMoney = t.Item3;
-
-            Tuple<double, double> t2 = _comm.takeCommision(money, earn);
-            double commission_percent = t2.Item2;
-            double commission_taken = t2.Item1;
-
-            return new InvestmentData(optimalStock, money, earn, earnMoney, commission_taken, commission_percent, result_money - commission_taken);
-
+            InvestmentData result = makeInvestment(money, roundNum, optimalStock, _isTrain);
+            return result;
         }
 
         public int findOptimalStock()
@@ -36,6 +27,11 @@ namespace InvestmentGame
             double maxAverage = StocksManager.getStocks().Max(st => st.getAverageEarning());
             Stock s = StocksManager.getStocks().First<Stock>(st => st.getAverageEarning() == maxAverage);
             return s._id;
+        }
+
+        public override int getStockId(double money, History hist, int roundNum)
+        {
+            return findOptimalStock();
         }
     }
 }
