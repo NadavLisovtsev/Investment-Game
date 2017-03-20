@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 
+
 namespace InvestmentGame.LearningAgents
 {
     public abstract class ARPredictionBasedAgent : HistoryBasedAgent

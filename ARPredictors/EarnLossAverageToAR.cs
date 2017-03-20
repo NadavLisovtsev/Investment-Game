@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using InvestmentGame.UtilitiesService;
+using InvestmentGame.Utils;
 
 
 namespace InvestmentGame.AssymptoticAgent
@@ -17,7 +18,7 @@ namespace InvestmentGame.AssymptoticAgent
         private static int _roundFactor = 2;
         private static DAL dal = new DAL(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
         private static object lockObject = new object();
-        private static Service1Client _utilsClient = new Service1Client();
+        private static UtilsClient _utilsClient = new UtilsClient();
 
         public double predict(List<double> ARs, List<double> gains)
         {

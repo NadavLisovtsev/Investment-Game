@@ -6,13 +6,14 @@ using System.Linq;
 using System.Web;
 using InvestmentGame.UtilitiesService;
 using InvestmentGame.LearningAgents;
+using InvestmentGame.Utils;
 
 namespace InvestmentGame.AssymptoticAgent
 {
     public class AsymptoticAgent : ARPredictionBasedAgent
     {
 
-        private Service1Client _utilClient = new Service1Client();  
+        private UtilsClient _utilClient = new UtilsClient();  
         private OptimalAgent _fallBackAgent = new OptimalAgent();
         private EarnLossAverageToAR _predictor = new EarnLossAverageToAR();
         private const int _minRoundNum = 2;

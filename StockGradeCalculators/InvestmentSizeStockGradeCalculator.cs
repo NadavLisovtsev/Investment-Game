@@ -1,4 +1,5 @@
 ﻿using InvestmentGame.UtilitiesService;
+using InvestmentGame.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace InvestmentGame.AssymptoticAgent
 {
     public class InvestmentSizeStockGradeCalculator : IStockGradeCalculator
     {
-        private static Service1Client _utilsClient = new Service1Client();
+        private static UtilsClient _utilsClient = new UtilsClient();
         private IARPredictor _predictor;
 
         public void setARPredictor(IARPredictor predictor)

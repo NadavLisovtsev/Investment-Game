@@ -8,12 +8,15 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Collections.Specialized;
 using System.Configuration;
+using ZeroMQ;
+using System.Web.Script.Serialization;
+using InvestmentGame.Utils;
+
 
 namespace InvestmentGame
 {
     public partial class Default : System.Web.UI.Page 
-    {  
-
+    { 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -144,7 +147,8 @@ namespace InvestmentGame
             TrainingMoneyInput.Text = "";
             MultiView1.SetActiveView(investment_message_view);
         }
-        
+
+
         //done training
         protected void goToGame(object sender, EventArgs e)
         {

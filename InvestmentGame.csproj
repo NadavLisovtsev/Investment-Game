@@ -82,6 +82,9 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="ZeroMQ">
+      <HintPath>packages\ZeroMQ.4.1.0.22\lib\net40\ZeroMQ.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\NadavDB.mdf" />
@@ -147,6 +150,18 @@
     <Compile Include="ARPredictors\LRRegressionPredictor.cs" />
     <Compile Include="ARPredictors\RFRegressionPredictor.cs" />
     <Compile Include="ARPredictors\RNNRegressionPredictor.cs" />
+    <Compile Include="AsymptoticAverage\AsymptoticAverage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AsymptoticAverage\BetaCumulativeDistPreCalc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AsymptoticAverage\Configuration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AsymptoticAverage\IFloatPreCalc.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="HttpClients\AVGClient.cs" />
     <Compile Include="HttpClients\LRClient.cs" />
     <Compile Include="HttpClients\RFClient.cs" />
@@ -183,6 +198,9 @@
     <Compile Include="InvestmentsRecorder.cs" />
     <Compile Include="Agents\ARPredictionBasedAgent.cs" />
     <Compile Include="HttpClients\HttpJsonClient.cs" />
+    <Compile Include="Utils\UtilsClient.cs" />
+    <Compile Include="Utils\UtilsRequestData.cs" />
+    <Compile Include="Utils\ZeroMQCommunicator.cs" />
     <Compile Include="WebModel\MinRoundsRequestsData.cs" />
     <Compile Include="HttpClients\NNClient.cs" />
     <Compile Include="ARPredictors\NNRegressionPredictor.cs" />
@@ -300,6 +318,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="packages\ZeroMQ.4.1.0.22\build\net40\ZeroMQ.targets" Condition="Exists('packages\ZeroMQ.4.1.0.22\build\net40\ZeroMQ.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
