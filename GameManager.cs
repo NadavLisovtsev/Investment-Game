@@ -38,7 +38,8 @@ namespace InvestmentGame
                 }
             }
 
-            relevantScenario = Global.scenarioNumGenerator.getRandomNum();
+           // relevantScenario = Global.scenarioNumGenerator.getRandomNum();
+            relevantScenario = 1;
             Thread.Sleep(10);
             relevantTrainingScenario = Global.trainingScenarioNumGenerator.getRandomNum();
         }

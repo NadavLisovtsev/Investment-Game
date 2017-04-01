@@ -33,7 +33,7 @@
           <asp:View ID="Intro2" runat="server">
         
            <script src="https://sarnelab.cs.biu.ac.il/Investment Game/Scripts/graph.js" type="text/javascript"></script> -->
-             <script src="http://localhost:52667/Scripts/graph.js" type="text/javascript"></script>
+           <!--  <script src="http://localhost:52667/Scripts/graph.js" type="text/javascript"></script> -->
 
             <br />
               <p>Our agent can invest in eight possible stocks.</p>
@@ -437,11 +437,11 @@
          <asp:View ID="training_view" runat="server">
 
             
-            <!-- <script src="https://sarnelab.cs.biu.ac.il/Investment Game/Scripts/site_script.js" type="text/javascript"></script> -->
-             <script src="http://localhost:52667/Scripts/site_script.js" type="text/javascript"></script>
+             <script src="https://sarnelab.cs.biu.ac.il/Investment Game/Scripts/site_script.js" type="text/javascript"></script>
+            <!-- <script src="http://localhost:52667/Scripts/site_script.js" type="text/javascript"></script> -->
 
-          <!-- <script src="https://sarnelab.cs.biu.ac.il/Investment Game/Scripts/training_script.js" type="text/javascript"></script> -->
-           <script src="http://localhost:52667/Scripts/training_script.js" type="text/javascript"></script>
+          <script src="https://sarnelab.cs.biu.ac.il/Investment Game/Scripts/training_script.js" type="text/javascript"></script>
+            <!-- <script src="http://localhost:52667/Scripts/training_script.js" type="text/javascript"></script> -->
 
 
             <div class="DataDiv">
@@ -466,11 +466,11 @@
                 <h1 class="WrongInput"></h1>
             </div>
             <asp:Button ID="Button2" runat="server" Text="Invest" OnClick="nextTraining" class="InvestButton"/>
-          <!--  <asp:Image ID="Image1" runat="server" ImageUrl="http://sarnelab.cs.biu.ac.il/Investment Game/Images/loading_spinner.gif" class="WaitGif" />
-            <asp:Image ID="Image2" runat="server" ImageUrl="http://sarnelab.cs.biu.ac.il/Investment Game/Images/investment.jpg" class="Image"/> -->
+            <asp:Image ID="Image1" runat="server" ImageUrl="http://sarnelab.cs.biu.ac.il/Investment Game/Images/loading_spinner.gif" class="WaitGif" />
+            <asp:Image ID="Image2" runat="server" ImageUrl="http://sarnelab.cs.biu.ac.il/Investment Game/Images/investment.jpg" class="Image"/>
 
-            <asp:Image ID="Image3" runat="server" ImageUrl="http://localhost:52667/Images/loading_spinner.gif" class="WaitGif" />
-            <asp:Image ID="Image4" runat="server" ImageUrl="http://localhost:52667/Images/investment.jpg" class="Image"/>
+            <!-- <asp:Image ID="Image3" runat="server" ImageUrl="http://localhost:52667/Images/loading_spinner.gif" class="WaitGif" />
+            <asp:Image ID="Image4" runat="server" ImageUrl="http://localhost:52667/Images/investment.jpg" class="Image"/> -->
         </asp:View>
 
          <asp:View ID="investment_view" runat="server">

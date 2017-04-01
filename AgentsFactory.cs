@@ -14,6 +14,7 @@ namespace InvestmentGame
             agentsDict = new Dictionary<string, Type>();
 
             agentsDict.Add("Optimal", Type.GetType("InvestmentGame.OptimalAgent"));
+            agentsDict.Add("ConstStock", Type.GetType("InvestmentGame.Agents.OneStockAgent"));
             agentsDict.Add("Asymptotic", Type.GetType("InvestmentGame.AssymptoticAgent.AsymptoticAgent"));
             agentsDict.Add("RegressionNN", Type.GetType("InvestmentGame.LearningAgents.RegressionAgentNN"));
             agentsDict.Add("RegressionSVM", Type.GetType("InvestmentGame.LearningAgents.RegressionAgentSVM"));

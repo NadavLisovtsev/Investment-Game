@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgentsFactory.cs" />
+    <Compile Include="Agents\OneStockAgent.cs" />
     <Compile Include="Agents\RegressionAgentAVG.cs" />
     <Compile Include="Agents\RegressionAgentLR.cs" />
     <Compile Include="Agents\RegressionAgentRF.cs" />
