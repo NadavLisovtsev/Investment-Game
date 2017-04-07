@@ -24,8 +24,8 @@ namespace InvestmentGame
 
         public int findOptimalStock()
         {
-            double maxAverage = StocksManager.getStocks().Max(st => st.getAverageEarning());
-            Stock s = StocksManager.getStocks().First<Stock>(st => st.getAverageEarning() == maxAverage);
+            double maxExpectation = StocksManager.getStocks().Max(st => st.getExcpectation());
+            Stock s = StocksManager.getStocks().First<Stock>(st => st.getExcpectation() == maxExpectation);
             return s._id;
         }
 

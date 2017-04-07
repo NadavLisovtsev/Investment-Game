@@ -19,8 +19,8 @@
             <p>  All you need to do is to decide on the amount of money you want the agent to invest on your behalf on each step. </p>
             <p>The agent will invest the money you give it and you will see the results of the investment after it was carried out.</p>
             <br/>
-            <p>For its help the agent will charge a 2% commission out of each investment it makes.</p>
-            <p>For example, if you give the agent $100, the agent will invest the given amount and charge 2$ from the result. </p>
+            <p>For its help the agent will charge a 0.2% commission out of each investment it makes.</p>
+            <p>For example, if you give the agent $100, the agent will invest the given amount and charge 0.2$ from the result. </p>
             <br/>
             <p>The amount of virtual money you end up with at the end of the game, will determine your additional bonus for this hit - each virtual $3 will get you 1 cent as a bonus.</p>
             <p>For example, if you end up with $150, you will get a bonus of 50 cents.</p>
@@ -32,8 +32,8 @@
 
           <asp:View ID="Intro2" runat="server">
         
-           <script src="https://sarnelab.cs.biu.ac.il/Investment Game/Scripts/graph.js" type="text/javascript"></script> -->
-           <!--  <script src="http://localhost:52667/Scripts/graph.js" type="text/javascript"></script> -->
+           <!-- <script src="https://sarnelab.cs.biu.ac.il/Investment Game/Scripts/graph.js" type="text/javascript"></script> -->
+             <script src="http://localhost:52667/Scripts/graph.js" type="text/javascript"></script>
 
             <br />
               <p>Our agent can invest in eight possible stocks.</p>
@@ -81,7 +81,7 @@
                         <asp:RadioButtonList ID="rbl2" runat="server">
                             <asp:ListItem>$1</asp:ListItem>
                             <asp:ListItem>$10</asp:ListItem>
-                            <asp:ListItem>$2</asp:ListItem>
+                            <asp:ListItem>$0.2</asp:ListItem>
                             <asp:ListItem>$0.5</asp:ListItem>
                         </asp:RadioButtonList>
                         <asp:RequiredFieldValidator ID="rfv2" Style="color:Red;" ControlToValidate="rbl2" runat="server" ErrorMessage="You have to answer"></asp:RequiredFieldValidator>
@@ -91,8 +91,8 @@
                         <asp:RadioButtonList ID="rbl3" runat="server">
                             <asp:ListItem>$100</asp:ListItem>
                             <asp:ListItem>$200</asp:ListItem>
-                            <asp:ListItem>$199</asp:ListItem>
-                            <asp:ListItem>$198</asp:ListItem>
+                            <asp:ListItem>$198.9</asp:ListItem>
+                            <asp:ListItem>$199.8</asp:ListItem>
                         </asp:RadioButtonList>
                         <asp:RequiredFieldValidator ID="rfv3" Style="color:Red;" ControlToValidate="rbl3" runat="server" ErrorMessage="You have to answer"></asp:RequiredFieldValidator>
                       </td>

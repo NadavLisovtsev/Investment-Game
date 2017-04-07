@@ -1,11 +1,12 @@
-﻿using System;
+﻿using InvestmentGame.RandomGenerators;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace InvestmentGame
 {
-    public class UniformDistributionGenerator
+    public class UniformDistributionGenerator : IRandomGenerator
     {
         private int[] buckets;
         private int min;

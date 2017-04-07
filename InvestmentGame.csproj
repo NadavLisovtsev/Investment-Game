@@ -167,6 +167,9 @@
     <Compile Include="HttpClients\LRClient.cs" />
     <Compile Include="HttpClients\RFClient.cs" />
     <Compile Include="HttpClients\RNNClient.cs" />
+    <Compile Include="RandomGenerators\IRandomGenerator.cs" />
+    <Compile Include="RandomGenerators\ListShuffleGenerator.cs" />
+    <Compile Include="RandomGenerators\RandomGeneratorFactory.cs" />
     <Compile Include="StockGradeCalculators\HFuncStockGradeCalculator.cs" />
     <Compile Include="ARPredictors\IARPredictor.cs" />
     <Compile Include="PreCalculations\IFloatPreCalc.cs" />
@@ -236,7 +239,7 @@
     </Compile>
     <Compile Include="Stock.cs" />
     <Compile Include="StocksManager.cs" />
-    <Compile Include="UniformDistributionGenerator.cs" />
+    <Compile Include="RandomGenerators\UniformDistributionGenerator.cs" />
     <Compile Include="User\User.cs" />
     <Compile Include="User\UserInfo.cs" />
     <Compile Include="User\UserManager.cs" />

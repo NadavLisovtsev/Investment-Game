@@ -1,5 +1,7 @@
-﻿using System;
+﻿using InvestmentGame.RandomGenerators;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -17,7 +19,7 @@ namespace InvestmentGame
 
         private static List<Stock> _stocks = new List<Stock>();
 
-        private static Dictionary<int, UniformDistributionGenerator> _stocksUniformGenerators = new Dictionary<int, UniformDistributionGenerator>();
+        private static Dictionary<int, IRandomGenerator> _stocksUniformGenerators = new Dictionary<int, IRandomGenerator>();
 
         public static void initialize()
         {
@@ -156,9 +158,12 @@ namespace InvestmentGame
             }
 
             //update unifrom generators
+            RandomGeneratorFactory generatorFactory = new RandomGeneratorFactory();
+            string generatorName = ConfigurationManager.AppSettings["StocksRandomGeneratorType"];
             foreach(Stock s in _stocks)
             {
-                 
+                int earnings_num = int.Parse(ConfigurationManager.AppSettings["EarningsPerStock"]);
+                _stocksUniformGenerators.Add(s._id, generatorFactory.CreateRandomGenerator(generatorName, 0, earnings_num - 1));
             }
 
         }
@@ -168,7 +173,7 @@ namespace InvestmentGame
             return _stocks.Exists(s => id == s._id);
         }
 
-        public static UniformDistributionGenerator getGeneratorForStock(int id)
+        public static IRandomGenerator getGeneratorForStock(int id)
         {
             return _stocksUniformGenerators[id];
         }

@@ -188,7 +188,8 @@ namespace InvestmentGame
             Session["History"] = hist;
 
             InvestmentsRecorder recorder = new InvestmentsRecorder(user);
-            recorder.RecordInvestment(investment_data, money, AfterMoney, roundNum, gm.relevantScenario, investment_data.stockId, isTrain);
+            int scenarioNum = isTrain ? gm.relevantTrainingScenario : gm.relevantScenario;
+            recorder.RecordInvestment(investment_data, money, AfterMoney, roundNum, scenarioNum, investment_data.stockId, isTrain);
 
 
             if (isTrain)

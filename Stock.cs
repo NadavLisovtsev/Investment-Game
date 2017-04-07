@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InvestmentGame.RandomGenerators;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -41,7 +42,7 @@ namespace InvestmentGame
 
         public double getEarning()
         {
-            UniformDistributionGenerator generator = StocksManager.getGeneratorForStock(_id);
+            IRandomGenerator generator = StocksManager.getGeneratorForStock(_id);
 
             return _earnings[generator.getRandomNum()];
         }
@@ -54,6 +55,16 @@ namespace InvestmentGame
         public bool equalToId(int id)
         {
             return id == _id;
+        }
+
+        public double getExcpectation()
+        {
+            double result = 1;
+            foreach(double earning in _earnings)
+            {
+                result *= (1 + earning);
+            }
+            return result;
         }
 
         public int getEarningsCount()
