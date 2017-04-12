@@ -31,7 +31,7 @@ namespace InvestmentGame
 
         public override int getStockId(double money, History hist, int roundNum)
         {
-            return findOptimalStock();
+            return optimalStock;
         }
     }
 }

@@ -220,7 +220,7 @@ namespace InvestmentGame
                 
 
                 Session["InvestmentMessageInvestedMoney"] = String.Format("You invested ${0}.", investment_data.investmentMoney);
-                Session["InvestmentMessageEarning"] = String.Format("The agent earned ${0} ({1}%).", floor2(investment_data.earnMoney), floor2(investment_data.earn) * 100);
+                Session["InvestmentMessageEarning"] = String.Format("The agent earned ${0} ({1}%).", floor2(investment_data.earnMoney), floor2(100 * investment_data.earn));
                 Session["InvestmentMessageCommission"] = String.Format("Commission of {0}%  (${1}) has been taken from your investment.", floor2(investment_data.commission_percent), floor2(investment_data.commission));
                 Session["InvestmentMessageFinal"] = String.Format("You get back ${0}, so now you have ${1} in your account", floor2(investment_data.endMoney), Session["Money"]);
             }
@@ -230,7 +230,7 @@ namespace InvestmentGame
 
 
                 Session["InvestmentMessageInvestedMoney"] = String.Format("You invested ${0}.", investment_data.investmentMoney);
-                Session["InvestmentMessageEarning"] = String.Format("The agent lost ${0} ({1}%).", floor2(investment_data.earnMoney) * (-1), floor2(investment_data.earn) * (-1) * 100);
+                Session["InvestmentMessageEarning"] = String.Format("The agent lost ${0} ({1}%).", floor2(investment_data.earnMoney) * (-1), floor2(100 * investment_data.earn) * (-1));
                 Session["InvestmentMessageCommission"] = String.Format("Commission of {0}%  (${1}) has been taken from your investment.", floor2(investment_data.commission_percent), floor2(investment_data.commission));
                 Session["InvestmentMessageFinal"] = String.Format("You get back ${0}, so now you have ${1} in your account", floor2(investment_data.endMoney), Session["Money"]);
             }
