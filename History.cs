@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InvestmentGame.WebModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -44,6 +45,22 @@ namespace InvestmentGame
         public double getCurrMoney()
         {
             return history[history.Count - 1]._currMoney;
+        }
+
+        public List<RoundData> getRoundDataList()
+        {
+            List<RoundData> resultList = new List<RoundData>();
+            foreach(HistoryRecord record in history)
+            {
+                RoundData roundData = new RoundData();
+                roundData.AR = record._investmentData.investmentMoney / record._prevMoney;
+                roundData.CommissionMoney = record._investmentData.commission;
+                roundData.Gain = record._investmentData.earn;
+                roundData.Money = record._prevMoney;
+                roundData.RoundNum = record._roundNum;
+                resultList.Add(roundData);
+            }
+            return resultList;
         }
     }
 }

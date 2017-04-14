@@ -29,16 +29,27 @@ namespace InvestmentGame.AssymptoticAgent
             _predictor = predictor;
         }
 
-        public double calcStockGrade(Stock s, double money, List<double> ARList, List<double> earnLossList, History history)
+        public double calcStockGrade(Stock s, double investedMoney, List<double> ARList, List<double> earnLossList, History history, int roundNum, Comission comm)
         {
             double earningProbability = 1.0 / s.getEarningsCount();
             List<double> earnings = s.getEarnings();
             double sum = 0;
+            List<HistoryRecord> investmentsRecords = history.getInvestmentsHistory();
+            double currTotalMoney = investmentsRecords[investmentsRecords.Count - 1]._currMoney;
+
 
             foreach (double earning in earnings)
             {
                 earnLossList.Add(earning);
-                double expectedAdoptionRate = _predictor.predict(ARList, earnLossList);
+                double earnMoney = (1 + earning) * investedMoney;
+                double commissionPercent = comm.takeCommision(investedMoney, earning).Item2;
+                double commissionMoney = comm.takeCommision(investedMoney, earning).Item1;
+                double endInvestmentMoney = earnMoney - commissionMoney;
+                double endMoney = currTotalMoney - investedMoney + endInvestmentMoney;
+
+                InvestmentData investmentData = new InvestmentData(s._id, investedMoney, earning, earnMoney, commissionMoney, commissionPercent, endInvestmentMoney);
+                history.addRecord(new HistoryRecord(investmentData, currTotalMoney, endMoney, roundNum));
+                double expectedAdoptionRate = _predictor.predict(endMoney, roundNum + 1, history);
                 sum += _h.combine(expectedAdoptionRate, earning) * earningProbability;
             }
             return sum;

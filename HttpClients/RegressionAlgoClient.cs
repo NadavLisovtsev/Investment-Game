@@ -13,9 +13,9 @@ namespace InvestmentGame.LearningAgents
         private const string _regressionMethodName = "Regression";
         private const string _minRoundsMethodName = "MinRounds";
 
-        public double getPrediction(List<double> ARs, List<double> gains)
+        public double getPrediction(double money, int roundNum, History hist)
         {
-            RegressionRequestData regressionData = new RegressionRequestData(getAlgoName(), ARs, gains);
+            RegressionRequestData regressionData = new RegressionRequestData(getAlgoName(), money, roundNum, hist);
 
             RequestData<RegressionRequestData> data = new RequestData<RegressionRequestData>(_regressionMethodName, regressionData);
 

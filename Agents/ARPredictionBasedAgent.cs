@@ -24,7 +24,7 @@ namespace InvestmentGame.LearningAgents
             _stockCalculator.setARPredictor(predictor);
         }
 
-        protected override int findRelevantStock(double money, List<double> ARList, List<double> earnLossList, History history)
+        protected override int findRelevantStock(double money, List<double> ARList, List<double> earnLossList, History history, int roundNum)
         {
             IEnumerable<Stock> stocks = StocksManager.getStocks();
             double maxGrade = -100;
@@ -36,7 +36,7 @@ namespace InvestmentGame.LearningAgents
 
             foreach (Stock s in stocks)
             {
-                double grade = _stockCalculator.calcStockGrade(s, money, ARList, earnLossList, history);
+                double grade = _stockCalculator.calcStockGrade(s, money, ARList, earnLossList, history, roundNum, _comm);
                 if (grade > maxGrade)
                 {
                     maxGrade = grade;

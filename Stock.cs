@@ -67,6 +67,20 @@ namespace InvestmentGame
             return result;
         }
 
+        public double getLossProbability()
+        {
+            int earningsCount = getEarningsCount();
+            int lossCount = 0;
+            foreach(double earning in _earnings)
+            {
+                if(earning < 0)
+                {
+                    lossCount++;
+                }
+            }
+            return lossCount / earningsCount;
+        }
+
         public int getEarningsCount()
         {
             return _earnings.Count;
@@ -76,5 +90,7 @@ namespace InvestmentGame
         {
             return _earnings;
         }
+
+
     }
 }

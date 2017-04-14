@@ -10,10 +10,19 @@ namespace InvestmentGame.LearningAgents
     {
         abstract protected RegressionAlgoClient getClient();
 
+
+        public double predict(double money, int roundNum, History hist)
+        {
+            RegressionAlgoClient client = getClient();
+            return client.getPrediction(money, roundNum, hist);
+        }
+
+
+        /*
         public double predict(List<double> ARs, List<double> gains)
         {
             RegressionAlgoClient client = getClient();
             return client.getPrediction(ARs, gains);
-        }
+        }*/
     }
 }

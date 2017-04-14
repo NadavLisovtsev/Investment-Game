@@ -20,8 +20,9 @@ namespace InvestmentGame.AssymptoticAgent
         private static object lockObject = new object();
         private static UtilsClient _utilsClient = new UtilsClient();
 
-        public double predict(List<double> ARs, List<double> gains)
+        public double predict(double money, int roundNum, History hist)
         {
+            List<double> gains = hist.getEarnLossList();
             double earnLossAverage = _utilsClient.CalcAsymptoticAverage(gains.ToArray());
             return getAdoptionRate(earnLossAverage);
         }

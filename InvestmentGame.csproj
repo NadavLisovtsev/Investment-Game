@@ -144,6 +144,7 @@
     <Compile Include="Agents\RegressionAgentLR.cs" />
     <Compile Include="Agents\RegressionAgentRF.cs" />
     <Compile Include="Agents\RegressionAgentRNN.cs" />
+    <Compile Include="Agents\SafestAgent.cs" />
     <Compile Include="Alert.cs" />
     <Compile Include="ARGainCombiners\ARGainCombiner.cs" />
     <Compile Include="Agents\AsymptoticAgent.cs" />
@@ -245,6 +246,7 @@
     <Compile Include="User\UserInfo.cs" />
     <Compile Include="User\UserManager.cs" />
     <Compile Include="User\UserSatisfaction.cs" />
+    <Compile Include="WebModel\RoundData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

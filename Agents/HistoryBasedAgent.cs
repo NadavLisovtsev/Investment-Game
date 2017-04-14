@@ -11,7 +11,7 @@ namespace InvestmentGame
     {
         abstract protected int getMinRoundNum();
         abstract protected InvestAgent getFallBackAgent();
-        abstract protected int findRelevantStock(double money, List<double> ARList, List<double> earnLoossList, History history);
+        abstract protected int findRelevantStock(double money, List<double> ARList, List<double> earnLoossList, History history, int roundNum);
 
         public override InvestmentData Invest(double money, History hist, int roundNum)
         {
@@ -37,7 +37,7 @@ namespace InvestmentGame
             List<double> earnLossList = history.getEarnLossList();
             List<double> ARList = history.getARList();
 
-            int stockId = findRelevantStock(money, ARList, earnLossList, history);
+            int stockId = findRelevantStock(money, ARList, earnLossList, history, roundNum);
 
             return stockId;
         }

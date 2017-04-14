@@ -41,6 +41,6 @@ C:\Users\Ola\Desktop\Nadav\Investment Game\bin\MathNet.Numerics.xml
 C:\Users\Ola\Desktop\Nadav\Investment Game\bin\System.Data.SQLite.pdb
 C:\Users\Ola\Desktop\Nadav\Investment Game\bin\System.Data.SQLite.xml
 C:\Users\Ola\Desktop\Nadav\Investment Game\bin\ZeroMQ.xml
-C:\Users\Ola\Desktop\Nadav\Investment Game\obj\Debug\InvestmentGame.csprojResolveAssemblyReference.cache
 C:\Users\Ola\Desktop\Nadav\Investment Game\obj\Debug\InvestmentGame.dll
 C:\Users\Ola\Desktop\Nadav\Investment Game\obj\Debug\InvestmentGame.pdb
+C:\Users\Ola\Desktop\Nadav\Investment Game\obj\Debug\InvestmentGame.csprojResolveAssemblyReference.cache
