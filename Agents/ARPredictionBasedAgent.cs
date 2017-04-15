@@ -43,6 +43,10 @@ namespace InvestmentGame.LearningAgents
                     maxGradeStockNum = s._id;
                 }
             }
+            if(ConfigurationManager.AppSettings["InverseStocks"] == "T")
+            {
+                maxGradeStockNum = StocksManager.getStocksNum() - maxGradeStockNum + 1;
+            }
             return maxGradeStockNum;
         }        
 

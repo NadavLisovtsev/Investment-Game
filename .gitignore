@@ -47,3 +47,6 @@ Temporary Items
 .apdisk
 ForDebug/output.txt
 DB/InvestmentGameDB.db
+DB/InvestmentGameDB.db
+obj/Debug/InvestmentGame.pdb
+DB/InvestmentGameDB.db
