@@ -31,11 +31,17 @@ namespace InvestmentGame.LearningAgents
             int maxGradeStockNum = 0;
             double currMoney = history.getCurrMoney();
             double currAR = money / currMoney;
+            int[] bannedStocks = new int[] { 1, 2, 7, 8 };
 
             ARList.Add(currAR);
 
+            
             foreach (Stock s in stocks)
             {
+                if(bannedStocks.ToList().Find(x => x == s._id) > 0)
+                {
+                    continue;
+                }
                 double grade = _stockCalculator.calcStockGrade(s, money, ARList, earnLossList, history, roundNum, _comm);
                 if (grade > maxGrade)
                 {
